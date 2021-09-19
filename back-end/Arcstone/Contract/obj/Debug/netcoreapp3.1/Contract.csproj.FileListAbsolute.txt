@@ -1,0 +1,13 @@
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\bin\Debug\netcoreapp3.1\Contract.deps.json
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\bin\Debug\netcoreapp3.1\Contract.dll
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\bin\Debug\netcoreapp3.1\Contract.pdb
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\bin\Debug\netcoreapp3.1\Entity.dll
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\bin\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.csproj.AssemblyReference.cache
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.AssemblyInfoInputs.cache
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.AssemblyInfo.cs
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.csproj.CoreCompileInputs.cache
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.csproj.CopyComplete
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.dll
+C:\Users\MSI GAMING\source\repos\Arcstone\Contract\obj\Debug\netcoreapp3.1\Contract.pdb

@@ -1,0 +1,114 @@
+<div class="row mb-1" style="background-color: white;">
+  <div class="col-md-3 col-sm-8 mt-1 mb-1">
+      <input type="text" class="form-control" [(ngModel)]="description" placeholder="What have you worked on?" />
+  </div>
+  <div class="col-md-2 col-sm-4 mt-1 mb-1">
+      <!-- Basic Select with Search -->
+      <select class="form-control" id="projectSelected">
+        <option *ngFor="let project of listProjects; index as i; first as isFirst" value="{{project.id}}">{{project.projectName}}</option>
+      </select>
+      <!-- <p-dropdown [options]="listProjects" [(ngModel)]="selectedProject" optionLabel="displayName"></p-dropdown> -->
+      <!-- <ng-select [items]="listProjects" bindLabel="projectName"> </ng-select> -->
+      <!--/ Basic Select with Search -->
+  </div>
+  <div class="col-md-3 col-sm-6 mt-1 mb-1">
+    <div class="row">
+      <div class="col-md-5 text-right pr-0">
+        <ngb-timepicker [(ngModel)]="startTime" [spinners]="false" (ngModelChange)="changeTime()"></ngb-timepicker>
+      </div>
+      <div class="col-md-1 pl-0 pr-0">
+        <strong>_</strong>
+      </div>
+      <div class="col-md-5 pl-0">
+        <ngb-timepicker [(ngModel)]="endTime" [spinners]="false" (ngModelChange)="changeTime()"></ngb-timepicker>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 col-sm-6 mt-1 mb-1">
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="Basic Date Picker"
+            [(ngModel)]="scheduleDate"
+            ngbDatepicker
+            #basicDP="ngbDatepicker"
+            style="width: 150px;"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary feather icon-calendar"
+              (click)="basicDP.toggle()"
+              type="button"
+              rippleEffect
+            ></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1 col-sm-6 mt-1 mb-1 text-center">
+    <strong>{{totalTime}}</strong>
+  </div>
+  <div class="col-md-1 col-sm-6 mt-1 mb-1">
+    <button type="button" class="btn btn-primary" rippleEffect (click)="addOrUpdateSchedule()" *ngIf="!editId">ADD</button>
+    <button type="button" class="btn btn-primary" rippleEffect (click)="addOrUpdateSchedule()" *ngIf="editId">UPDATE</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-payment">
+      <div class="card-header">
+        <h4 class="card-title">This week</h4>
+        <div class="card-title"><label>Total: </label> <strong>{{weeklySummary ? weeklySummary.totalHoursStr : "00:00"}}</strong></div>
+      </div>
+      <div class="card-body" *ngIf="lstSchedule">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-payment" *ngFor="let dayData of lstSchedule">
+              <div class="card-header" style="background-color: antiquewhite;">
+                <h4 class="card-title">{{dayData.dayInWeek}}</h4>
+                <div class="card-title"><label>Total: </label> <strong> {{dayData.totalHourStr}}</strong></div>
+              </div>
+              <div class="card-body">
+                <div class="row" id="table-responsive">
+                  <div class="table-responsive">
+                    <table class="table mb-0">
+                      <tbody>
+                          <tr *ngFor="let schedule of dayData.listSchedules">
+                            <td style="width: 100px;" class="text-nowrap">{{schedule.projectName}}</td>
+                            <td style="width: 400px;" class="text-nowrap">{{schedule.description}}</td>
+                            <td style="width: 100px;" class="text-nowrap">{{schedule.startTimeStr}} - {{schedule.endTimeStr}}</td>
+                            <td style="width: 100px;" class="text-nowrap">{{schedule.totalHourStr}}</td>
+                            <td style="width: 20px;" class="overflow-hidden">
+                              <div ngbDropdown container="body" *ngIf="!editId">
+                                <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
+                                  <i data-feather="more-vertical"></i>
+                                </button>
+                                <div ngbDropdownMenu>
+                                  <a ngbDropdownItem href="javascript:void(0);" (click)="edit(schedule)"
+                                    ><i data-feather="edit-2" class="mr-50"></i><span>Edit</span></a
+                                  ><a ngbDropdownItem href="javascript:void(0);" (click)="delete(schedule.id)"
+                                    ><i data-feather="trash" class="mr-50"></i><span>Delete</span></a
+                                  >
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-primary" rippleEffect (click)="cancelEdit()" *ngIf="editId == schedule.id">CANCEL</button>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast position="bottom-right"></p-toast>
